@@ -1,22 +1,25 @@
 # GoETHWallet
- 
-This is a CLI App example using the [Cobra](https://github.com/spf13/cobra). This CLI app generate the ethereum wallet randomlly,
-as well as extract the wallet from ethereum private key
 
-Available Commands:
-  completion  Generate the autocompletion script for the specified shell
-  eth         extract ethereum wallet address form private key
-  help        Help about any command
-  version     print the version of cli
+This is a CLI App example using the [Cobra](https://github.com/spf13/cobra) library. This CLI app generates Ethereum wallets randomly and extracts the wallet address from an Ethereum private key.
 
-Flags:
-  -h, --help   help for cli
+## Available Commands
 
-main commands are under eth command
+- `completion`: Generate the autocompletion script for the specified shell
+- `eth`: Extract Ethereum wallet address from a private key
+- `help`: Help about any command
+- `version`: Print the version of the CLI
 
-Available Commands:
-  ethwallet   get ethereum wallet form private key usgin flag --key [privatekey]
-  generate    generate ethereum base wallet address
+## Flags
 
-Flags:
-  -h, --help   help for eth
+- `-h, --help`: Help for the CLI
+
+## Main Commands (Under `eth` Command)
+
+### Available Commands
+
+- `ethwallet`: Get Ethereum wallet from a private key using the flag `--key [privatekey]`
+- `generate`: Generate an Ethereum base wallet address
+
+### Flags
+
+- `-h, --help`: Help for `eth` command
