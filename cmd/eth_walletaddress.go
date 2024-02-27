@@ -12,10 +12,21 @@ import (
 
 var ethwallet = &cobra.Command{
 	Use:   "ethwallet",
-	Short: "get ethereum wallet form private key",
-	Long:  ``,
+	Short: "get ethereum wallet form private key ",
+	Long:  `command --key PRIVATEKEY`,
 	Run: func(cmd *cobra.Command, args []string) {
-		key, _ := cmd.Flags().GetString("key")
+		key, err := cmd.Flags().GetString("key")
+
+		if err != nil {
+			fmt.Println("Error:", err)
+			return
+		}
+
+		if key == "" {
+			fmt.Println("Error: flag --key is required")
+			return
+		}
+
 		privateKey, err := crypto.HexToECDSA(key)
 		if err != nil {
 			log.Fatalf("failed to parse private key: %v", err)
@@ -38,6 +49,7 @@ func importPrivateKeyExample(privateKey *ecdsa.PrivateKey) {
 }
 
 func init() {
-	ethwallet.Flags().StringP("key", "k", "", "private key")
+	ethwallet.Flags().StringP("key", "k", "", "private key (required)")
+	ethwallet.MarkFlagRequired("key")
 	ethereum.AddCommand(ethwallet)
 }
